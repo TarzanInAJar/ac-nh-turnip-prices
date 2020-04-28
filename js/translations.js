@@ -52,16 +52,15 @@ i18next
     updateContent();
   });
   // init set content
-  $(document).ready(initialize);
-
-  let delayTimer;
-  $(document).on('input', function() {
-    // adding short delay after input to help mitigate potential lag after keystrokes
-    clearTimeout(delayTimer);
-    delayTimer = setTimeout(function() {
-      updateContent();
-    }, 500);
+  $(document).ready(async function() {
+    await initialize();
+    let delayTimer;
+    $(document).on('input', function() {
+      // adding short delay after input to help mitigate potential lag after keystrokes
+      clearTimeout(delayTimer);
+      delayTimer = setTimeout(function() {
+        updateContent();
+      }, 500);
+    });
   });
-
-  $('input[type = radio]').on('change', updateContent);
 });
