@@ -51,6 +51,19 @@
     <p data-i18n="[html]welcome.conclusion"></p>
   </div>
 
+  <div class="dialog-box">
+    <h2 class="dialog-box__name" data-i18n="general.daisy-mae"></h2>
+    <div id="unauthenticated">
+      <p data-i18n="[html]signin.unauthenticated"></p>
+      <p data-i18n="[html]signin.signin"></p>
+    </div>
+    <div id="authenticated" style="display: none;">
+      <p data-i18n="signin.authenticated"></p>
+      <p data-i18n="[html]signin.signout"></p>
+      <button onClick="logout()" class="btn btn-primary">Logout</button>
+    </div>
+  </div>
+
   <div class="nook-phone">
     <h1>Turnip Prophet</h1>
 
