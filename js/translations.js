@@ -1,6 +1,6 @@
 function updateContent() {
   update();
-  $('body').localize();
+  $('body').localize({ user: user });
 }
 const defaultLanguage = 'en';
 i18next

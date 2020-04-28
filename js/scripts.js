@@ -80,6 +80,10 @@ const initialize = async function () {
   } catch (e) {
     console.error(e);
   }
+  if (user) {
+    $("#unauthenticated").hide()
+    $("#authenticated").show()
+  };
 
   $(document).trigger("input");
 
