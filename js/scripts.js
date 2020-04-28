@@ -382,8 +382,13 @@ const update = function () {
 
   const prices = [buy_price, buy_price, ...sell_prices];
 
+  // TODO handle case where populated from query and user is logged in...
   if (!window.populated_from_query) {
-    updateLocalStorage(prices, first_buy, previous_pattern);
+    if (user) {
+      sendToBackend(prices, first_buy, previous_pattern);
+    } else {
+      updateLocalStorage(prices, first_buy, previous_pattern);
+    }
   }
 
   calculateOutput(prices, first_buy, previous_pattern);
