@@ -66,9 +66,9 @@ const fillFields = function (prices, first_buy, previous_pattern) {
   })
 }
 
-const initialize = function () {
+const initialize = async function () {
   try {
-    const previous = getPrevious();
+    const previous = await getPrevious()
     const first_buy = previous[0];
     const previous_pattern = previous[1];
     const prices = previous[2];
@@ -237,8 +237,8 @@ const getPreviousFromLocalstorage = function () {
  * if none of them match then it looks in local storage.
  * @return {[first time, previous pattern, prices]}
  */
-const getPrevious = function () {
-  return getPreviousFromQuery() || getPreviousFromLocalstorage();
+const getPrevious = async function () {
+  return await getPreviousFromBackend() || getPreviousFromQuery() || getPreviousFromLocalstorage();
 };
 
 const getSellPrices = function () {
