@@ -7,6 +7,12 @@
     "description": "This app lets you track your island's turnip prices daily, but you'll have to put the prices in yourself!",
     "conclusion": "After that, the Turnip Prophet app will <b>magically</b> predict the turnip prices you'll have for the rest of the week."
   },
+  "signin": {
+    "unauthenticated": "Hey! Did you know you can <b>sign in</b>? You can even share your prices with other islands!",
+    "authenticated": "Welcome back, {{user.name}}!",
+    "signin": "If you would like to sign in, please <a href=\"/oauth2/authorization/google\">click here!</a>",
+    "signout": "If you would like to logout, please click the button below!"
+  },
   "first-time": {
     "title": "First-Time Buyer",
     "description": "Is this the first time a resident is buying turnips from Daisy Mae on <b>your own</b> island?<i>(This affects your pattern)</i>",
