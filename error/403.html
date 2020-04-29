@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script>
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (settings.type == 'POST' || settings.type == 'PUT'
+                    || settings.type == 'DELETE') {
+                    if (!(/^http:.*/.test(settings.url) || /^https:.*/
+                        .test(settings.url))) {
+                        // Only send the token to relative URLs i.e. locally.
+                        xhr.setRequestHeader("X-XSRF-TOKEN",
+                            Cookies.get('XSRF-TOKEN'));
+                    }
+                }
+            }
+        });
+
+        const logout = function () {
+            $.ajax({
+                type: 'POST',
+                url: "/logout",
+                success: function (response) {
+                    location.href = "/";
+                }
+            })
+        }
+    </script>
+    <style>
+        label {
+            font-weight: bold;
+            opacity: 0.7;
+            text-align: center;
+            display: block;
+            font-style: normal;
+            color: #aaa;
+            font-size: 0.9rem;
+            margin: 8px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="dialog-box">
+    <h2 class="dialog-box__name">Daisy Mae</h2>
+    <p>Hmm... it looks like we're having trouble with your Nook Passport. Do you have any other passports we could look at?",</p>
+    <label><i>(Have you tried contacting the <a href="mailto:rybread@gmail.com">Mayor</a>?)</i></label>
+</div>
+<button type="button" class="button button--reset" onClick="logout()">Let's try another!</button>
+</body>
+</html>
