@@ -60,7 +60,9 @@
     <div id="authenticated" style="display: none;">
       <p data-i18n="signin.authenticated"></p>
       <p data-i18n="[html]signin.signout"></p>
-      <button onClick="logout()" class="btn btn-primary">Logout</button>
+      <div style="display:flex">
+        <button type="button" class="button button--reset" onClick="logout()">Logout</button>
+      </div>
     </div>
   </div>
 
