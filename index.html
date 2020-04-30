@@ -65,6 +65,33 @@
     <p data-i18n="[html]welcome.conclusion"></p>
   </div>
 
+  <div id="group_links" class="dialog-box">
+    <h2 class="dialog-box__name" data-i18n="general.daisy-mae"></h2>
+    <p data-i18n="groups.salutation"></p>
+
+
+    <div class="table-wrapper">
+      <table id="groupTurnipTable">
+        <thead>
+          <tr>
+            <th>Pooski</th>
+          </tr>
+          <tr>
+            <td><a href="link">Odie Island</a> (Yours)</td>
+            <td>Yesterday, 6:00PM EST</td>
+          </tr>
+          <tr>
+            <td><a href="link">BocaIsland</a></td>
+            <td>Today, 6:00PM EST</td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+
+  </div>
+
+
   <div class="nook-phone">
     <h1>Turnip Prophet</h1>
 
@@ -212,8 +239,61 @@
         </div>
         <button type="button" id="reset" class="button button--reset" name="action" data-i18n="prices.reset"></button>
       </form>
+      <div style="transform:rotate(180deg)">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+          </defs>
+          <g class="parallax">
+            <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.6" />
+            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.4)" />
+            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.2)" />
+            <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
 
 
+    <div class="nook-phone">
+      <h1 data-i18n="predictions.title"></h1>
+
+      <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+          </defs>
+          <g class="parallax">
+            <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.6" />
+            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.4)" />
+            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.2)" />
+            <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+          </g>
+        </svg>
+      </div>
+    <div class="nook-phone-center">
+
+      <div class="form__row">
+        <h6 data-i18n="choose-island.title"></h6>
+        <div class="input__group">
+          <label for="" data-i18n="choose-island.description"></label>
+          <div class="input__radio-buttons">
+            <input type="radio" id="choose-island-radio-yours" name="choose-island" value="0" checked>
+            <label for="choose-island-radio-yours">TODO (yours)</label>
+            <input type="radio" id="choose-island-radio-island1" name="choose-island" value="1">
+            <label for="choose-island-radio-island1">Island1</label>
+            <input type="radio" id="choose-island-radio-island2" name="choose-island" value="2">
+            <label for="choose-island-radio-island2">Island2</label>
+            <input type="radio" id="choose-island-radio-island3" name="choose-island" value="3">
+            <label for="choose-island-radio-island3">Island3</label>
+            <input type="radio" id="choose-island-radio-island4" name="choose-island" value="4">
+            <label for="choose-island-radio-island4">Island4</label>
+          </div>
+        </div>
+      </div>
 
       <h2 data-i18n="output.title"></h2>
 
@@ -278,6 +358,11 @@
           <tbody id="output"></tbody>
         </table>
       </div>
+
+
+
+
+
     </div>
 
     <div style="transform:rotate(180deg)">

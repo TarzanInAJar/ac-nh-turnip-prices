@@ -616,3 +616,59 @@ body.darkmode--activated input[type="radio"]:checked+label {
 body.darkmode--activated i {
   color: #7b6955;
 }
+
+#groupTurnipTable {
+  border-collapse: collapse;
+}
+
+#groupTurnipTable th div:nth-of-type(1) {
+  margin-bottom: 2px;
+}
+
+#groupTurnipTable th div:nth-of-type(2) {
+  display: flex;
+  justify-content: space-around;
+  opacity: 0.4;
+}
+
+#groupTurnipTable td {
+  white-space: nowrap;
+  max-width: 150px;
+  padding: 6px 4px;
+  text-align: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+#groupTurnipTable tbody tr {
+  opacity: 0.8;
+}
+
+#groupTurnipTable tbody tr:hover {
+  cursor: default;
+  opacity: 1;
+}
+
+#groupTurnipTable .table-pattern {
+  white-space: nowrap;
+}
+
+#groupTurnipTable td.range4 {
+  background-color: hsl(0, 80%, 85%);
+}
+
+#groupTurnipTable td.range3{
+  background-color: hsl(30, 80%, 85%);
+}
+
+#groupTurnipTable td.range2 {
+  background-color: hsl(60, 80%, 85%);
+}
+
+#groupTurnipTable td.range1 {
+  background-color: hsl(90, 80%, 85%);
+}
+
+#groupTurnipTable td.range0 {
+  background-color: hsl(140, 80%, 85%);
+}

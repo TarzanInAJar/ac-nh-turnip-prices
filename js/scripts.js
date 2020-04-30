@@ -24,6 +24,16 @@ const getPreviousPatternRadios = function () {
   ];
 }
 
+const getChooseIslandRadios = function () {
+  return [
+    $("#choose-island-radio-yours")[0],
+    $("#choose-island-radio-island1")[0],
+    $("#choose-island-radio-island2")[0],
+    $("#choose-island-radio-island3")[0],
+    $("#choose-island-radio-island4")[0]
+  ];
+}
+
 const getCheckedRadio = function (radio_array) {
   return radio_array.find(radio => radio.checked === true).value;
 }
@@ -43,6 +53,7 @@ const previous_pattern_radios = getPreviousPatternRadios()
 const permalink_input = $('#permalink-input')
 const permalink_button = $('#permalink-btn')
 const snackbar = $('#snackbar')
+const choose_island_radios = getChooseIslandRadios()
 
 //Functions
 const fillFields = function (prices, first_buy, previous_pattern) {
@@ -66,17 +77,22 @@ const fillFields = function (prices, first_buy, previous_pattern) {
   })
 }
 
+const loadPrevious = function(previous) {
+  const first_buy = previous[0];
+  const previous_pattern = previous[1];
+  const prices = previous[2];
+  if (prices === null) {
+    fillFields([], first_buy, previous_pattern)
+  } else {
+    fillFields(prices, first_buy, previous_pattern)
+  }
+}
+
 const initialize = async function () {
   try {
+    await retrieveBackendInfo()
     const previous = await getPrevious()
-    const first_buy = previous[0];
-    const previous_pattern = previous[1];
-    const prices = previous[2];
-    if (prices === null) {
-      fillFields([], first_buy, previous_pattern)
-    } else {
-      fillFields(prices, first_buy, previous_pattern)
-    }
+    loadPrevious(previous)
   } catch (e) {
     console.error(e);
   }
@@ -235,14 +251,24 @@ const getPreviousFromLocalstorage = function () {
   ];
 };
 
+const getPreviousFromBackend = function () {
+  if (user) {
+    if (current_island === 0) {
+      return user.turnips
+    } else {
+      debugger
+      return null // TODO
+    }
+  }
+}
 
 /**
  * Gets previous values. First tries to parse parameters,
  * if none of them match then it looks in local storage.
  * @return {[first time, previous pattern, prices]}
  */
-const getPrevious = async function () {
-  return await getPreviousFromBackend() || getPreviousFromQuery() || getPreviousFromLocalstorage();
+const getPrevious = function () {
+  return getPreviousFromBackend() || getPreviousFromQuery() || getPreviousFromLocalstorage();
 };
 
 const getSellPrices = function () {
@@ -367,6 +393,15 @@ const flashMessage = function(message) {
 }
 
 const update = function () {
+  debugger
+  const selected_island = parseInt(getCheckedRadio(choose_island_radios));
+  if (current_island !== selected_island) {
+    console.log('island changed')
+    current_island = selected_island
+    const previous = getPrevious()
+    loadPrevious(previous)
+  }
+
   const sell_prices = getSellPrices();
   const buy_price = parseInt(buy_input.val());
   const first_buy = getCheckedRadio(first_buy_radios) == 'true';

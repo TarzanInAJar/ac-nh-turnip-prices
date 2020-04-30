@@ -1,4 +1,6 @@
 let user = null
+let group = null
+let current_island = 0
 
 $.ajaxSetup({
     beforeSend : function(xhr, settings) {
@@ -21,6 +23,23 @@ const logout = function() {
         location.reload()
     })
     return true;
+}
+
+const fetchGroupInfo = async function () {
+    let response = await fetch('group');
+    if (response.ok) {
+        return await response.json();
+    }
+}
+
+const fetchGroupTurnips = async function (groupId) {
+    return fetch('group/' + groupId + '/turnips')
+        .then((response) => {
+            return response.json()
+        })
+        .then((json) => {
+            return json;
+        })
 }
 
 const fetchUserInfo = async function () {
@@ -62,20 +81,27 @@ const previousFromTurnipWeek = function (turnipWeek) {
         ]
     ]
 }
-const getPreviousFromBackend = async function () {
-    let previous;
+const retrieveBackendInfo = async function () {
     try {
         await fetchUserInfo();
         if (user) {
+            //first handle user
             let turnipWeek = await fetchUserTurnipWeek()
             if (turnipWeek) {
-                previous = previousFromTurnipWeek(turnipWeek)
+                user.turnips = previousFromTurnipWeek(turnipWeek)
+            }
+            // now groups
+            let groups = await fetchGroupInfo()
+            if (groups && groups.length > 0) {
+                // only handle 1 group for now TODO Just remove multiple groups from backend
+                group = groups[0]
+                let groupTurnipWeeks = await fetchGroupTurnips(group.id)
+                group.turnips = groupTurnipWeeks.map(async (week) => await previousFromTurnipWeek(week));
             }
         }
     } catch (e) {
         console.error("Error retrieving turnips from backend: ", e);
     }
-    return previous;
 }
 
 const sendToBackend = function (prices, first_buy, previous_pattern) {
