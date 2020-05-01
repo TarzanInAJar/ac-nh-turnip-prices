@@ -18,8 +18,11 @@ const chart_options = {
 };
 
 function update_chart(input_data, possibilities) {
-  let ctx = $("#chart"),
-  datasets = [{
+  let datasets
+  if (!input_data) {
+    datasets = []
+  } else {
+    datasets = [{
       label: i18next.t("output.chart.input"),
       data: input_data.slice(1),
       fill: false,
@@ -31,8 +34,10 @@ function update_chart(input_data, possibilities) {
       label: i18next.t("output.chart.maximum"),
       data: possibilities[0].prices.slice(1).map(day => day.max),
       fill: "-1",
-    },
-  ],
+    }]
+  }
+
+  let ctx = $("#chart"),
   labels = [i18next.t("weekdays.sunday")].concat(...[i18next.t("weekdays.abr.monday"), i18next.t("weekdays.abr.tuesday"), i18next.t("weekdays.abr.wednesday"), i18next.t("weekdays.abr.thursday"), i18next.t("weekdays.abr.friday"), i18next.t("weekdays.abr.saturday")].map(
       day => [i18next.t("times.morning"),
         i18next.t("times.afternoon")].map(

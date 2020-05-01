@@ -281,6 +281,7 @@ const displayPercentage = function(fraction) {
 const calculateOutput = function (data, first_buy, previous_pattern) {
   if (isEmpty(data)) {
     $("#output").html("");
+    update_chart();
     return;
   }
   let output_possibilities = "";
@@ -385,7 +386,14 @@ const update = function () {
   // TODO handle case where populated from query and user is logged in...
   if (!window.populated_from_query) {
     if (user) {
-      sendToBackend(prices, first_buy, previous_pattern);
+      if (current_island === user.id) {
+        user.turnips = [
+            first_buy,
+            previous_pattern,
+            prices
+        ]
+        sendToBackend(prices, first_buy, previous_pattern);
+      }
     } else {
       updateLocalStorage(prices, first_buy, previous_pattern);
     }
