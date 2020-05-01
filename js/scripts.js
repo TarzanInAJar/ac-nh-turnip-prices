@@ -62,17 +62,22 @@ const fillFields = function (prices, first_buy, previous_pattern) {
   })
 }
 
+const loadPrevious = function(previous) {
+  const first_buy = previous[0];
+  const previous_pattern = previous[1];
+  const prices = previous[2];
+  if (prices === null) {
+    fillFields([], first_buy, previous_pattern)
+  } else {
+    fillFields(prices, first_buy, previous_pattern)
+  }
+}
+
 const initialize = async function () {
   try {
+    await retrieveBackendInfo()
     const previous = await getPrevious()
-    const first_buy = previous[0];
-    const previous_pattern = previous[1];
-    const prices = previous[2];
-    if (prices === null) {
-      fillFields([], first_buy, previous_pattern)
-    } else {
-      fillFields(prices, first_buy, previous_pattern)
-    }
+    loadPrevious(previous)
   } catch (e) {
     console.error(e);
   }
