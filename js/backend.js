@@ -4,7 +4,7 @@ let current_island = null
 let choose_island_radios = [];
 
 $.ajaxSetup({
-    beforeSend : function(xhr, settings) {
+    beforeSend: function (xhr, settings) {
         if (settings.type == 'POST' || settings.type == 'PUT'
             || settings.type == 'DELETE') {
             if (!(/^http:.*/.test(settings.url) || /^https:.*/
@@ -17,8 +17,8 @@ $.ajaxSetup({
     }
 });
 
-const logout = function() {
-    $.post("/logout", function() {
+const logout = function () {
+    $.post("/logout", function () {
         $(".unauthenticated").show();
         $(".authenticated").hide();
         $("#choose-island").hide()
@@ -164,7 +164,7 @@ const getPreviousFromBackend = function () {
     }
 }
 
-const switchIslandIfNecessary = function() {
+const switchIslandIfNecessary = function () {
     if (group) {
         const selected_island = parseInt(getCheckedRadio(choose_island_radios));
         if (current_island !== selected_island) {
