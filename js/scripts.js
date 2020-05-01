@@ -84,6 +84,9 @@ const initialize = async function () {
   if (user) {
     $("#unauthenticated").hide()
     $("#authenticated").show()
+    if (group) {
+      $("#choose-island").show()
+    }
   };
 
   $(document).trigger("input");
