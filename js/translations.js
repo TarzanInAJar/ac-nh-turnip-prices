@@ -53,8 +53,6 @@ i18next
   });
   // init set content
   $(document).ready(async function() {
-    $(document).on('input', updateContent);
-    await initialize();
     let delayTimer;
     $(document).on('input', function() {
       // adding short delay after input to help mitigate potential lag after keystrokes
@@ -63,5 +61,6 @@ i18next
         updateContent();
       }, 500);
     });
+    await initialize();
   });
 });
