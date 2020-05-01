@@ -49,19 +49,15 @@ const fillFields = function (prices, first_buy, previous_pattern) {
   checkRadioByValue(first_buy_radios, first_buy);
   checkRadioByValue(previous_pattern_radios, previous_pattern);
 
-  buy_input.focus();
   buy_input.val(prices[0] || '')
-  buy_input.blur();
   const sell_prices = prices.slice(2)
 
   sell_prices.forEach((price, index) => {
-    if (!price) {
-      return
-    } else {
-      const element = $("#sell_" + (index + 2));
-      element.focus();
+    const element = $("#sell_" + (index + 2));
+    if (price) {
       element.val(price);
-      element.blur();
+    } else {
+      element.val(null)
     }
   })
 }
