@@ -239,14 +239,13 @@ const getPreviousFromLocalstorage = function () {
   ];
 };
 
-
 /**
  * Gets previous values. First tries to parse parameters,
  * if none of them match then it looks in local storage.
  * @return {[first time, previous pattern, prices]}
  */
-const getPrevious = async function () {
-  return await getPreviousFromBackend() || getPreviousFromQuery() || getPreviousFromLocalstorage();
+const getPrevious = function () {
+  return getPreviousFromBackend() || getPreviousFromQuery() || getPreviousFromLocalstorage();
 };
 
 const getSellPrices = function () {
