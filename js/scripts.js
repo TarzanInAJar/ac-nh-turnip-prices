@@ -371,6 +371,8 @@ const flashMessage = function(message) {
 }
 
 const update = function () {
+  switchIslandIfNecessary()
+
   const sell_prices = getSellPrices();
   const buy_price = parseInt(buy_input.val());
   const first_buy = getCheckedRadio(first_buy_radios) == 'true';
