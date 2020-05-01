@@ -87,7 +87,7 @@
 
 
 
-      <form class="input__form">
+      <form id="input-form" class="input__form">
         <div class="form__row">
           <h6 data-i18n="first-time.title"></h6>
           <div class="input__group">
@@ -212,8 +212,52 @@
         </div>
         <button type="button" id="reset" class="button button--reset" name="action" data-i18n="prices.reset"></button>
       </form>
+      <div style="transform:rotate(180deg)">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+          </defs>
+          <g class="parallax">
+            <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.6" />
+            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.4)" />
+            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.2)" />
+            <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
 
 
+  <div class="nook-phone">
+      <h1 data-i18n="predictions.title"></h1>
+
+      <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+          </defs>
+          <g class="parallax">
+            <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.6" />
+            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.4)" />
+            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.2)" />
+            <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+          </g>
+        </svg>
+      </div>
+    <div class="nook-phone-center">
+
+      <div id="choose-island" class="form__row" style="display: none;">
+        <h6 data-i18n="choose-island.title"></h6>
+        <div class="input__group">
+          <label for="" data-i18n="choose-island.description"></label>
+          <div id="choose-island-wrapper" class="input__radio-buttons">
+            <!-- dynamically created -->
+          </div>
+        </div>
+      </div>
 
       <h2 data-i18n="output.title"></h2>
 
@@ -296,7 +340,6 @@
     </div>
   </div>
 
-  </div>
 
   <div class="dialog-box">
     <h2 class="dialog-box__name" data-i18n="general.daisy-mae"></h2>
