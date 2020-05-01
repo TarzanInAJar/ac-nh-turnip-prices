@@ -62,6 +62,13 @@
     "morning": "AM",
     "afternoon": "PM"
   },
+  "predictions": {
+    "title": "Predictions"
+  },
+  "choose-island": {
+    "title": "Choose Island",
+    "description": "Choose which Island you would like to see predictions of:"
+  },
   "output": {
     "title": "Output",
     "chance": "% Chance",
