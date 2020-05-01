@@ -175,3 +175,8 @@ const switchIslandIfNecessary = function () {
         }
     }
 }
+
+const getChooseIslandRadios = function () {
+    let radios = $('input[type = radio][name="choose-island"]')
+    return radios.toArray();
+}
