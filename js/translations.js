@@ -53,6 +53,7 @@ i18next
   });
   // init set content
   $(document).ready(async function() {
+    $(document).on('input', updateContent);
     await initialize();
     let delayTimer;
     $(document).on('input', function() {
